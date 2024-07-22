@@ -53,6 +53,17 @@ def gauss_method(matrix, a, b):
     return 'YES'
 
 
+def find_error(matrix, a, b):
+    for key_a in range(a):
+        count = 0
+        for key_b in range(b):
+            if float(matrix[key_a][key_b]) == 0:
+                count += 1
+        if count == b:
+            if matrix[key_a][b] != 0:
+                return 'NO'
+
+
 if gauss_method(matrix, a, b) == 'NO':
     print('No solution')
 elif gauss_method(matrix, a, b) == 'YES':
@@ -66,3 +77,6 @@ elif gauss_method(matrix, a, b) == 'YES':
     print(res)
 elif gauss_method(matrix, a, b) == 'INF':
     print('Infinite number of solutions')
+else:
+    if find_error(matrix, a, b) == 'NO':
+        print('No solution')
